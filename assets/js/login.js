@@ -10,11 +10,23 @@ const login = () => {
     let cadastradosenha = localStorage.getItem("senha")
 
     if (user == cadastroLogin && senha == cadastradosenha) {
-        window.location.href = `../../pages/home.html`
+        localStorage.setItem("status" , ("true"))
+
+        setTimeout(() => {
+         window.location.href = `../../pages/home.html`
         alert("logado com sucesso")
+        }, 1000);
         return
     }
     alert("usuario ou senha incorreto")
 }
+const loginAuto = () => {
+    let status = localStorage.getItem("status")
+
+    if(status == "true"){
+        window.location.href = "../../pages/home.html"
+    }
+}
+loginAuto()
 
 btnLogin.addEventListener("click" , login)
